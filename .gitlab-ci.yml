@@ -1,0 +1,16 @@
+image: commandemy/ansible-cicd:latest
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+
+services:
+  - docker:19.03.1-dind
+
+before_script:
+  - docker info
+
+build:
+  stage: test
+  script:
+    - kitchen test
