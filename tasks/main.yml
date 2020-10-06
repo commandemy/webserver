@@ -11,3 +11,9 @@
 - copy:
     dest: "/var/www/html/index.html"  
     content: Hello World! from {{ login.stdout }}@{{ansible_default_ipv4.address}}
+- name: set permissions
+  file:
+    path: "/var/www"
+    state: directory
+    recurse: yes
+    mode: '0755'
